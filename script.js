@@ -63,11 +63,15 @@ if (debug) {
             x: [parseInt(div.dataset.x) / 100, (parseInt(div.dataset.x) + parseInt(div.dataset.w)) / 100],
             y: [parseInt(div.dataset.y) / 100, (parseInt(div.dataset.y) + parseInt(div.dataset.h)) / 100]
         };
-        let insideBox = ((clickPercentages.x > bounds.x[0] && clickPercentages.x < bounds.x[1]) && (clickPercentages.y > bounds.y[0] && clickPercentages.y < bounds.y[1]));
+        let insideBox = (
+            (clickPercentages.x > bounds.x[0] && clickPercentages.x < bounds.x[1])
+            &&
+            (clickPercentages.y > bounds.y[0] && clickPercentages.y < bounds.y[1])
+        );
         console.log(`Clicked ${insideBox ?
             'inside' : 'outside'
             } the box.`);
-        if (insideBox) {
+        if (insideBox && !debug) {
             canvas.removeEventListener('click', canvasClick);
             ctx.fillStyle = 'rgba(0, 0, 0, 0.75)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -84,6 +88,14 @@ if (debug) {
                 canvas.removeEventListener('transitionend', transitionListener);
             };
             canvas.addEventListener('transitionend', transitionListener);
+        } else if (debug) {
+            ctx.fillStyle = '#FF0000';
+            ctx.fillRect(
+                div.dataset.x * canvas.width / 100,
+                div.dataset.y * canvas.height / 100,
+                div.dataset.w * canvas.width / 100,
+                div.dataset.h * canvas.width / 100
+            );
         }
     };
     canvas.addEventListener('click', canvasClick);
