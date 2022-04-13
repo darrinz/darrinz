@@ -114,7 +114,7 @@ slideshow > div > canvas.dark {
     opacity: 100%;
 }
 
-slideshow.transitioning div:not(:last-child) {
+slideshow.transitioning div {
     transform: scale(0.9);
 }
 

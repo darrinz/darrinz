@@ -92,7 +92,9 @@ if (debug) {
             canvas.classList.add('dark');
             const transitionListener = () => {
                 console.log('Transition completed');
-                scrollToNext();
+                if (div.parentElement.lastElementChild != div) {
+                    scrollToNext();
+                }
                 canvas.removeEventListener('transitionend', transitionListener);
             };
             canvas.addEventListener('transitionend', transitionListener);
