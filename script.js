@@ -12,12 +12,14 @@ function scrollToNext() {
         });
         [...slideshow.children][0].removeEventListener('transitionend', transitionListener);
     };
-    [...slideshow.children][0].addEventListener('transitionend', transitionListener);
+    setTimeout(() => {
+        [...slideshow.children][0].addEventListener('transitionend', transitionListener);
+    }, 5);
 
     return new Promise(resolve => {
         const scrollHandler = () => {
             let delta = Math.abs(endpoint - slideshow.scrollLeft);
-            if (debug) {
+            if (true || debug) {
                 console.log(endpoint, slideshow.scrollLeft, delta);
             }
             if (delta <= 5) {
