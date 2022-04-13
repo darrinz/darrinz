@@ -17,6 +17,7 @@ function scrollToNext() {
     return new Promise(resolve => {
         const scrollHandler = () => {
             let delta = Math.abs(slideshow.scrollLeft - distance);
+            console.log(`Scroll delta: ${delta}`);
             if (delta <= 1) {
                 slideshow.removeEventListener('scroll', scrollHandler);
                 slideshow.classList.remove('transitioning');
