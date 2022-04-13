@@ -2,12 +2,12 @@ const slideshow = document.querySelector('slideshow');
 const debug = slideshow.classList.contains('debug');
 
 function scrollToNext() {
-    let distance = slideshow.clientWidth;
+    let endpoint = slideshow.scrollLeft + slideshow.clientWidth;
 
     slideshow.classList.add('transitioning');
     const transitionListener = () => {
         slideshow.scrollBy({
-            left: distance,
+            left: slideshow.clientWidth,
             behavior: 'smooth'
         });
         [...slideshow.children][0].removeEventListener('transitionend', transitionListener);
@@ -16,8 +16,11 @@ function scrollToNext() {
 
     return new Promise(resolve => {
         const scrollHandler = () => {
-            let delta = Math.abs(slideshow.scrollLeft - distance);
-            if (delta <= 1) {
+            let delta = Math.abs(endpoint - slideshow.scrollLeft);
+            if (debug) {
+                console.log(endpoint, slideshow.scrollLeft, delta);
+            }
+            if (delta <= 2) {
                 slideshow.removeEventListener('scroll', scrollHandler);
                 slideshow.classList.remove('transitioning');
                 resolve();
