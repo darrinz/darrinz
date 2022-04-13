@@ -8,10 +8,40 @@ body {
     overflow: hidden;
     background-color: black;
     color: white;
+    user-select: none;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('font/Futura-Bold.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Futura LtCn BT';
+    src: url('font/FuturaBT-LightCondensed.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+.title {
+    font-size: 3em;
+    font-family: 'Futura';
+    font-weight: 500;
+    font-style: normal;
 }
 
 a {
+    font-size: 1.5em;
     color: unset;
+    font-family: 'Futura LtCn BT';
+    font-weight: 300;
+    font-style: normal;
 }
 
 slideshow {
@@ -94,7 +124,7 @@ slideshow.transitioning div {
     display: block;
 }
 
-@media screen and (min-width: 768px)  {
+@media screen and (min-width: 768px) {
     .size-warning {
         display: none;
     }
