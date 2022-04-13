@@ -20,7 +20,7 @@ function scrollToNext() {
             if (debug) {
                 console.log(endpoint, slideshow.scrollLeft, delta);
             }
-            if (delta <= 2) {
+            if (delta <= 5) {
                 slideshow.removeEventListener('scroll', scrollHandler);
                 slideshow.classList.remove('transitioning');
                 resolve();
