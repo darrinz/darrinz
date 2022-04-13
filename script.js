@@ -45,13 +45,16 @@ if (debug) {
         div.querySelector('img').onload = () => {
             canvas.width = div.clientWidth;
             canvas.height = div.clientHeight;
-            ctx.fillStyle = '#FF0000';
-            ctx.fillRect(
+            ctx.strokeStyle = '#FF0000';
+            ctx.lineWidth = 5;
+            ctx.beginPath();
+            ctx.rect(
                 div.dataset.x * canvas.width / 100,
                 div.dataset.y * canvas.height / 100,
                 div.dataset.w * canvas.width / 100,
                 div.dataset.h * canvas.width / 100
             );
+            ctx.stroke();
         };
     }
     const canvasClick = e => {
@@ -92,13 +95,16 @@ if (debug) {
             };
             canvas.addEventListener('transitionend', transitionListener);
         } else if (debug) {
-            ctx.fillStyle = '#FF0000';
-            ctx.fillRect(
+            ctx.strokeStyle = '#FF0000';
+            ctx.beginPath();
+            ctx.lineWidth = 5;
+            ctx.rect(
                 div.dataset.x * canvas.width / 100,
                 div.dataset.y * canvas.height / 100,
                 div.dataset.w * canvas.width / 100,
                 div.dataset.h * canvas.width / 100
             );
+            ctx.stroke();
         }
     };
     canvas.addEventListener('click', canvasClick);
