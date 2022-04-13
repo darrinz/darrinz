@@ -27,8 +27,6 @@ body {
     font-display: swap;
 }
 
-
-
 .title {
     font-size: 3em;
     font-family: 'Futura';
@@ -116,7 +114,7 @@ slideshow > div > canvas.dark {
     opacity: 100%;
 }
 
-slideshow.transitioning div {
+slideshow.transitioning div:not(:last-child) {
     transform: scale(0.9);
 }
 
